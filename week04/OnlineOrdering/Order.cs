@@ -16,16 +16,16 @@ public class Order
         _products.Add(product);
     }
 
-    public double GetTotalCost()
+    public decimal CalculateTotalCost()
     {
-        double total = 0;
+        decimal total = 0;
 
         foreach (Product product in _products)
         {
             total += product.GetTotalCost();
         }
 
-        if (_customer.IsInUSA())
+        if (_customer.LivesInUSA())
         {
             total += 5;
         }
@@ -39,11 +39,11 @@ public class Order
 
     public string GetPackingLabel()
     {
-        string label = "";
+        string label = "Packing Label:\n";
 
         foreach (Product product in _products)
         {
-            label += product.GetPackingLabel() + "\n";
+            label += product.GetProductInfo() + "\n";
         }
 
         return label;
@@ -51,6 +51,17 @@ public class Order
 
     public string GetShippingLabel()
     {
-        return _customer.GetShippingLabel();
+        string location;
+
+        if (_customer.LivesInUSA())
+        {
+            location = "Inside USA";
+        }
+        else
+        {
+            location = "Outside USA";
+        }
+
+        return $"Shipping Label:\n{_customer.GetCustName()}\n{_customer.GetAddress()}\n{location}";
     }
 }

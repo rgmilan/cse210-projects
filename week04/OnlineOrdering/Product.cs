@@ -1,25 +1,30 @@
 public class Product
 {
-    private string _name;
+    private string _prodName;
     private string _productId;
-    private double _price;
+    private decimal _price;
     private int _quantity;
 
-    public Product(string name, string productId, double price, int quantity)
+    public Product(
+        string prodName,
+        string productId,
+        decimal price,
+        int quantity
+    )
     {
-        _name = name;
+        _prodName = prodName;
         _productId = productId;
         _price = price;
         _quantity = quantity;
     }
 
-    public double GetTotalCost()
+    public decimal GetTotalCost()
     {
         return _price * _quantity;
     }
 
-    public string GetPackingLabel()
+    public string GetProductInfo()
     {
-        return $"{_name} - {_productId}";
+        return $"{_prodName} ({_productId})";
     }
 }

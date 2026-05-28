@@ -1,15 +1,23 @@
 public class Address
 {
-    private string _streetAddress;
+    private string _street;
     private string _city;
-    private string _stateProvince;
+    private string _state;
+    private string _zipcode;
     private string _country;
 
-    public Address(string streetAddress, string city, string stateProvince, string country)
+    public Address(
+        string street,
+        string city,
+        string state,
+        string zipcode,
+        string country
+    )
     {
-        _streetAddress = streetAddress;
+        _street = street;
         _city = city;
-        _stateProvince = stateProvince;
+        _state = state;
+        _zipcode = zipcode;
         _country = country;
     }
 
@@ -20,6 +28,6 @@ public class Address
 
     public string GetFullAddress()
     {
-        return $"{_streetAddress}\n{_city}, {_stateProvince}\n{_country}";
+        return $"{_street}\n{_city}, {_state} {_zipcode}\n{_country}";
     }
 }
