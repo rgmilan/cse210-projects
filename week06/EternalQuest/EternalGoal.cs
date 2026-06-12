@@ -5,7 +5,7 @@ public class EternalGoal : Goal
     {
     }
 
-    public override int RecordEvent()
+    public override int RecordsEvent()
     {
         return GetPoints();
     }
@@ -15,8 +15,13 @@ public class EternalGoal : Goal
         return false;
     }
 
+    public override string GetDetails()
+    {
+        return $"{GetStatus()} {GoalName()} ({GetDescription()})";
+    }
+
     public override string GetStringRepresentation()
     {
-        return $"EternalGoal:{GetShortName()},{GetDescription()},{GetPoints()}";
+        return $"EternalGoal:{GoalName()},{GetDescription()},{GetPoints()}";
     }
 }

@@ -14,7 +14,7 @@ public class SimpleGoal : Goal
         _isComplete = isComplete;
     }
 
-    public override int RecordEvent()
+    public override int RecordsEvent()
     {
         if (!_isComplete)
         {
@@ -30,8 +30,13 @@ public class SimpleGoal : Goal
         return _isComplete;
     }
 
+    public override string GetDetails()
+    {
+        return $"{GetStatus()} {GoalName()} ({GetDescription()})";
+    }
+
     public override string GetStringRepresentation()
     {
-        return $"SimpleGoal:{GetShortName()},{GetDescription()},{GetPoints()},{_isComplete}";
+        return $"SimpleGoal:{GoalName()},{GetDescription()},{GetPoints()},{_isComplete}";
     }
 }
